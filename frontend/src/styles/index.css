@@ -31,11 +31,13 @@ header {
 
 header button, header i{
   color: #191B19 !important;
+  cursor: pointer;
 }
 
 .logo{
   height: 40px;
   padding: 10px;
+  cursor: pointer;
 }
 
 .logo-white{
