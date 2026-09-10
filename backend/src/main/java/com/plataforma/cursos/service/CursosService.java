@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 import com.plataforma.cursos.domain.entities.Cursos;
 import com.plataforma.cursos.DTO.CursosDTO;
+import com.plataforma.cursos.DTO.ListCursosDTO;
 import com.plataforma.cursos.DTO.ViewCursosDTO;
 import com.plataforma.cursos.domain.entities.ModuloCurso;
 import com.plataforma.cursos.domain.entities.Subcategoria;
@@ -36,17 +37,20 @@ public class CursosService {
     }
 
     @Cacheable("TodosOsCursos")
-    public List<CursosDTO> findAll() {
+    public List<ListCursosDTO> findAll() {
         List<Cursos> cursos = repository.findAll();
 
+        List<Integer> cursoIds = cursos.stream().map(curso -> curso.getId().intValue()).toList();
+        Map<Integer, AvaliacaoResumoDTO> resumosPorCurso = avaliacoesCursoService.findResumoByCursoIds(cursoIds);
+
         return cursos.stream()
-            .map(CursosDTO::fromEntity)
+            .map(curso -> ListCursosDTO.fromEntity(curso, resumosPorCurso.get(curso.getId().intValue())))
             .toList();
     }
 
     @Cacheable("cursosMaisVendidos")
     public List<CursosDTO> findBestSellers(){
-        List<Cursos> cursos = repository.findTop10ByOrderByAlunosMatriculadosDesc();
+        List<Cursos> cursos = repository.findDistinctTop10ByOrderByAlunosMatriculadosDesc();
         
         if (cursos.isEmpty()) {
             throw new BusinessException("Nenhum curso encontrado", true,  HttpStatus.NOT_FOUND, "find-best-cursos");

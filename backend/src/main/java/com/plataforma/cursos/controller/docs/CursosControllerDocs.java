@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import com.plataforma.cursos.domain.entities.Cursos;
 import com.plataforma.cursos.DTO.CursosDTO;
+import com.plataforma.cursos.DTO.ListCursosDTO;
 import com.plataforma.cursos.DTO.ViewCursosDTO;
 import com.plataforma.cursos.DTO.CriarCursoDTO;
 
@@ -18,7 +19,7 @@ public interface CursosControllerDocs {
 
     /**
      * Encontra todos os cursos cadastrados. 
-     * @return Lista de {@link CursosDTO} cadastrados.
+     * @return Lista de {@link ListCursosDTO} cadastrados.
      */
     @Operation(summary = "Encontrar todos cursos", description = "Encontra todos os cursos cadastrados")
     @ApiResponses({
@@ -31,7 +32,7 @@ public interface CursosControllerDocs {
         ),
         @ApiResponse(responseCode = "403", description = "não autorizado"),
     })
-    public List<CursosDTO> list();
+    public List<ListCursosDTO> list();
 
     /**
      * Obtém a lista de cursos mais vendidos.

@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import com.plataforma.cursos.domain.entities.Cursos;
 import com.plataforma.cursos.DTO.CursosDTO;
+import com.plataforma.cursos.DTO.ListCursosDTO;
 import com.plataforma.cursos.DTO.ViewCursosDTO;
 import com.plataforma.cursos.DTO.CriarCursoDTO;
 import com.plataforma.cursos.service.CursosService;
@@ -29,7 +30,7 @@ public class CursosController implements CursosControllerDocs {
     }
     
     @GetMapping
-    public List<CursosDTO> list() {
+    public List<ListCursosDTO> list() {
         return service.findAll();
     }
 
