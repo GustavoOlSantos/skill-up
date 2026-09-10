@@ -15,7 +15,7 @@ function CardCursos({ curso, maisVendidos, origin, aulasConcluidas }) {
         <article key={curso.id} className="card-curso" onClick={() => navigate(`/cursos/${curso.slug}`)}>
 
             <section className={`card-image ${imgLoaded ? "loaded" : ""}`}>
-                <img src={getCloudImageUrl(curso.imagemUrl)} alt={curso.nome} onLoad={() => setImgLoaded(true)}/>
+                <img src={getCloudImageUrl(curso.imagemUrl)} alt={curso.nome} onLoad={() => setImgLoaded(true)} loading="lazy"/>
             </section>
 
             <section>

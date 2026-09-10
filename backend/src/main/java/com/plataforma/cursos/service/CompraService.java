@@ -55,7 +55,10 @@ public class CompraService {
         compra.setCurso(curso);
         compra.setDataCompra(LocalDateTime.now());
 
+        curso.setAlunosMatriculados(curso.getAlunosMatriculados() + 1);
+
         compraRepository.save(compra);
+        cursoRepository.save(curso);
     }
 
     public boolean jaComprouCurso(Long userId, Long cursoId){
