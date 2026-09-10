@@ -35,6 +35,7 @@ public class CursosService {
         this.avaliacoesCursoService = avaliacoesCursoService;
     }
 
+    @Cacheable("TodosOsCursos")
     public List<CursosDTO> findAll() {
         List<Cursos> cursos = repository.findAll();
 

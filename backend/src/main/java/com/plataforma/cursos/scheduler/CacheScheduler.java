@@ -17,4 +17,10 @@ public class CacheScheduler {
     public void limparCacheCategorias() {
        System.out.println("Cache de categorias limpo!");
     }
+    
+    @Scheduled(fixedRate = 1800000)
+    @CacheEvict(value = "TodosOsCursos", allEntries = true)
+    public void limparCacheTodosOsCursos() {
+       System.out.println("Cache de todos os cursos limpo!");
+    }
 }
