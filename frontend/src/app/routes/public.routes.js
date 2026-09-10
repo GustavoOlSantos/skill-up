@@ -1,7 +1,7 @@
 import Home from "../../features/home/";
 import Login from "../../features/auth/login/";
 import Cadastro from "../../features/auth/cadastro/";
-import Cursos from "../../features/cursos";
+import ExplorarCursos from "../../features/cursos";
 import CursoPage from "../../features/cursos/cursoPage";
 import NotFound from "../../features/not-found/";
 
@@ -19,8 +19,8 @@ export const publicRoutes = [
     element: <Cadastro />
   },
   {
-    path: "/cursos",
-    element: <Cursos />
+    path: "/explorar-cursos/:slug?",
+    element: <ExplorarCursos />
   },
   {
     path: "/cursos/:slug",

@@ -40,9 +40,9 @@ function NavBar() {
             />
 
             <ButtonText
-                className="btn textOnly disabled desktop-only"
+                className="btn textOnly desktop-only"
                 text="Descobrir"
-                /*onClick={() => navigate("/cursos")}*/
+                onClick={() => navigate("/explorar-cursos")}
             />
 
             <div className={`search-wrapper ${mobileSearchOpen ? "mobile-open" : ""}`}>
