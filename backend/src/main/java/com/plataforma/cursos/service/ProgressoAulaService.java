@@ -31,9 +31,8 @@ public class ProgressoAulaService {
 
 
         public ProgressoAula getProgresso(Long aulaId, Long userId) {
-                return progressoAulaRepository
-                        .findByUsuarioIdAndAulaId(userId, aulaId)
-                        .orElse(null);
+                return progressoAulaRepository.findByUsuarioIdAndAulaId(userId, aulaId)
+                .orElse(null);
         }
 
         public boolean salvar(ProgressoRequestDTO progresso, Long userId){

@@ -30,8 +30,8 @@ public class CompraService {
     public List<CursosDTO> getCursoByUserId(Long userId) {
         List<Compra> compras = compraRepository.findByUsuarioId(userId);
         return compras.stream()
-                .map(compra -> CursosDTO.fromEntity(compra.getCurso()))
-                .toList();
+        .map(compra -> CursosDTO.fromEntity(compra.getCurso()))
+        .toList();
 }
 
     public void comprarCurso(Long userId, Long cursoId) {
