@@ -60,16 +60,14 @@ function NavBar() {
             {user && (
                 <div className="mobile-only header-icons-mobile">
                     <ButtonIcon
-                        className="disabled"
                         icon="fa-solid fa-cart-shopping"
-                        /*onClick={() => navigate("/carrinho")}*/
+                        onClick={() => navigate("/carrinho")}
                         alt="Carrinho de compras"
                     />
 
                     <ButtonIcon
-                        className="disabled"
                         icon="fa-regular fa-heart"
-                        /*onClick={() => navigate("/desejos")}*/
+                        onClick={() => navigate("/favoritos")}
                         alt="Cursos desejados"
                     />
                 </div>
@@ -117,16 +115,16 @@ function NavBar() {
 
                     <div className="header-icons">
                         <ButtonIcon
-                            className="disabled"
+                            className=""
                             icon="fa-solid fa-cart-shopping"
-                            /*onClick={() => navigate("/carrinho")}*/
+                            onClick={() => navigate("/carrinho")}
                             alt="Carrinho de compras"
                         />
 
                         <ButtonIcon
-                            className="disabled"
+                            className=""
                             icon="fa-regular fa-heart"
-                            /*onClick={() => navigate("/desejos")}*/
+                            onClick={() => navigate("/favoritos")}
                             alt="Cursos desejados"
                         />
 

@@ -257,3 +257,68 @@
     max-width: 85%;
   }
 }
+
+.card-curso{
+    position: relative;
+}
+
+.card-curso-actions{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    gap: 8px;
+
+    z-index: 5;
+}
+
+.card-action{
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #00000018;
+    border-radius: 50%;
+
+    background-color: #ffffffee;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.card-action:hover{
+    transform: scale(1.08);
+}
+
+.card-action i{
+    font-size: 16px;
+}
+
+.card-action.favorito{
+    color: #555;
+}
+
+.card-action.favorito.active{
+    color: #e53935;
+}
+
+.card-action.carrinho{
+    color: #555;
+}
+
+.card-action.carrinho.active{
+    color: #0b62fe;
+}
+
+.card-action:disabled{
+    cursor: wait;
+    opacity: 0.6;
+}
