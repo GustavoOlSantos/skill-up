@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {useState, useEffect, useContext} from 'react';
+import { Link } from 'react-router-dom';
 
 import { UserContext } from '../../app/providers/user-context';
 import BannerCards from './banner-cards';
@@ -14,7 +14,7 @@ import defaultIcon from "../../assets/default-icon.jpg";
 
 function Home(){
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cursos, setCursos] = useState([]);
     const { user } = useContext(UserContext);
@@ -93,7 +93,7 @@ function Home(){
 
             <section className="evolucao double-container">
                 <figure>
-                    <img src={sectionImg}></img>
+                    <img src={sectionImg} alt="Evolua sua carreira" />
                 </figure>
 
                 <article>

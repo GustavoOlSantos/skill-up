@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
 import api from "../../services/api";
@@ -84,11 +84,11 @@ function ExplorarCursos() {
         }
     }, [categorias, slug]);
 
-    const getSubcategoriasCurso = (curso) => {
+    const getSubcategoriasCurso = useCallback((curso) => {
         return curso.subcategorias || curso.subCategorias || [];
-    };
+    }, []);
 
-    const cursoPertenceCategoria = (curso, categoria) => {
+    const cursoPertenceCategoria =  useCallback((curso, categoria) => {
 
         const subcategoriasCurso = getSubcategoriasCurso(curso);
 
@@ -108,9 +108,9 @@ function ExplorarCursos() {
 
             return idsSubcategoriasCategoria.includes(idSubcategoria);
         });
-    };
+    }, [getSubcategoriasCurso]);
 
-    const cursoPertenceSubcategoria = (curso, subcategoria) => {
+    const cursoPertenceSubcategoria = useCallback((curso, subcategoria) => {
 
         const subcategoriasCurso = getSubcategoriasCurso(curso);
 
@@ -123,7 +123,7 @@ function ExplorarCursos() {
 
             return id === subcategoria.id;
         });
-    };
+    }, [getSubcategoriasCurso]);
 
     const cursosFiltrados = useMemo(() => {
 

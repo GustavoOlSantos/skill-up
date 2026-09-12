@@ -4,22 +4,23 @@ import api from "../../services/api";
 function FooterCategorias(){
 
     const [categorias, setCategorias] = useState([]);
-    const dbcategories = [
-        "Desenvolvimento",
-        "Business",
-        "Comunicação",
-        "Desenvolvimento Pessoal",
-        "Idiomas",
-        "Inteligência Artificial",
-        "Cloud Computing",
-        "Design & Criatividade"
-    ];
 
     useEffect(() => {
+        const dbcategories = [
+            "Desenvolvimento",
+            "Business",
+            "Comunicação",
+            "Desenvolvimento Pessoal",
+            "Idiomas",
+            "Inteligência Artificial",
+            "Cloud Computing",
+            "Design & Criatividade"
+        ];
+        
         api.post("/categorias/filtrar", dbcategories)
         .then(res => setCategorias(res.data))
         .catch(err => console.error(err));
-    }, [dbcategories]);
+    }, []);
 
     return (
         <section className="categories">

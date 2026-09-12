@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import SocialBtn from "../social-media-btns";
 import FooterCategorias from "./footer-categories";
@@ -55,18 +55,18 @@ function Footer(){
                     <nav aria-labelledby="sobre-heading">
                         <h3 id="sobre-heading">Sobre</h3>
                         <ul className="unstyled-list">
-                            <li><a href="#">Quem somos</a></li>
-                            <li><a href="#">Política de privacidade</a></li>
-                            <li><a href="#">Termos de uso</a></li>
+                            <li><Link to="/quem-somos">Quem somos</Link></li>
+                            <li><Link to="/politica-de-privacidade">Política de privacidade</Link></li>
+                            <li><Link to="/termos-de-uso">Termos de uso</Link></li>
                         </ul>
                     </nav>
 
                     <nav aria-labelledby="contato-heading">
                         <h3 id="contato-heading">Fale Conosco</h3>
                         <ul className="unstyled-list">
-                            <li><a href="#">Email e Telefone</a></li>
-                            <li><a href="#">Perguntas frequentes</a></li>
-                            <li><a href="#">Ajuda e Suporte</a></li>
+                            <li><Link to="/contato">Email e Telefone</Link></li>
+                            <li><Link to="/perguntas-frequentes">Perguntas frequentes</Link></li>
+                            <li><Link to="/ajuda-e-suporte">Ajuda e Suporte</Link></li>
                         </ul>
                     </nav>
 

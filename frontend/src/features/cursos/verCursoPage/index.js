@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect, useRef} from 'react';
+import {useContext, useState, useEffect, useRef, useCallback} from 'react';
 import {useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from "react-markdown";
 import { UserContext } from '../../../app/providers/user-context';
@@ -56,20 +56,16 @@ function VerCurso(){
         }
     };
 
-     const onPlayerStateChange = (event) => {
+    const onPlayerStateChange = useCallback((event) => {
         const player = playerRef.current;
 
         if (!player || typeof player.seekTo !== "function") return;
 
         if (event.data === window.YT.PlayerState.PLAYING) {
-
             if (aulaAtualTimeStampRef.current != null && !player.__seeked) {
-
                 const duration = player.getDuration?.() || 0;
 
-                // só faz seek quando o vídeo está realmente pronto
                 if (duration > 0) {
-
                     player.__seeked = true;
 
                     requestAnimationFrame(() => {
@@ -85,10 +81,7 @@ function VerCurso(){
             if (!curso || !currentId) return;
 
             const aulas = curso.modulos.flatMap(m => m.aulas);
-
             const indexAtual = aulas.findIndex(a => a.id === currentId);
-
-//            const currentAula = aulas[indexAtual];
             const nextAula = aulas[indexAtual + 1];
 
             api.post("/progresso/aula", {
@@ -110,7 +103,7 @@ function VerCurso(){
             setAulaAtual(nextAula.id);
             setAulaAtualDados(nextAula);
         }
-    };
+    }, [curso]);
 
     /* function toggleDescription(){
         const el = document.querySelector(".curso-descricao-text");
@@ -163,7 +156,7 @@ function VerCurso(){
 
     useEffect(() => {
         aulaAtualTimeStampRef.current = aulaAtualTimeStamp;
-    }, [aulaAtualTimeStamp, onPlayerStateChange]);
+    }, [aulaAtualTimeStamp]);
 
     useEffect(() => {
         if(user === undefined) return;

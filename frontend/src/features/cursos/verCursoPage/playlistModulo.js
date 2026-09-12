@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 function closeOrOpenModule(event) {
     const iconElement = event.currentTarget;
     const moduloElement = event.currentTarget.closest(".playlist-modulo");
