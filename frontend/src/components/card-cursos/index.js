@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { UserContext } from "../../app/providers/user-context";
@@ -149,7 +149,7 @@ function CardCursos({ curso, maisVendidos, origin, aulasConcluidas }) {
                 <Tags dado={curso.quantidadeAvaliacoes} texto="Avaliações"/>
             </section>
 
-            {origin == null || origin == undefined ?
+            {origin === null || origin === undefined ?
                 <section className="curso-preco">
                     <h2>R$ {curso.preco.toLocaleString()}</h2>
                 </section>

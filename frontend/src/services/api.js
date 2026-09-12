@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { authService, isAuthenticated } from '../features/auth/services/authService';
+import { authService } from '../features/auth/services/authService';
 
 const API_URL = process.env.REACT_APP_API_URL;
 

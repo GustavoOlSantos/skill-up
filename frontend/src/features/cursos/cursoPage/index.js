@@ -38,8 +38,8 @@ function CursoPage() {
   const [noCarrinho, setNoCarrinho] = useState(false);
   const [carrinhoLoading, setCarrinhoLoading] = useState(false);
 
-  const [favorito, setFavorito] = useState(false);
-  const [favoritoLoading, setFavoritoLoading] = useState(false);
+  //const [favorito, setFavorito] = useState(false);
+  //const [favoritoLoading, setFavoritoLoading] = useState(false);
 
   const [modalAberto, setModalAberto] = useState(false);
 

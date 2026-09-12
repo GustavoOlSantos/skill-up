@@ -1,5 +1,3 @@
-import react from "react";
-
 function FeatureCard({icon, title, text}){
     return(
         <div className="feature-card">

@@ -154,7 +154,9 @@ function ExplorarCursos() {
     }, [
         cursos,
         categoriaSelecionada,
-        subcategoriaSelecionada
+        subcategoriaSelecionada,
+        cursoPertenceCategoria,
+        cursoPertenceSubcategoria
     ]);
 
     const selecionarCategoria = (categoria) => {
@@ -200,7 +202,7 @@ function ExplorarCursos() {
 
         });
 
-    }, [categorias, cursos]);
+    }, [categorias, cursos, cursoPertenceCategoria]);
 
     if (loading) {
         return <Loading texto="cursos"/>;

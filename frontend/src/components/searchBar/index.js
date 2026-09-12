@@ -1,9 +1,8 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 function SearchBar(){
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     return(
         <div className="search-container">

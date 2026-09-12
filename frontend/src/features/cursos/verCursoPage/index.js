@@ -1,5 +1,5 @@
-import react, {useContext, useState, useEffect, useRef, useCallback} from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import {useContext, useState, useEffect, useRef} from 'react';
+import {useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from "react-markdown";
 import { UserContext } from '../../../app/providers/user-context';
 
@@ -8,7 +8,6 @@ import ButtonText from '../../../components/buttonText';
 import ButtonIcon from '../../../components/buttonIcon';
 import PlaylistModulo from './playlistModulo';
 
-import { authService } from '../../auth/services/authService';
 import api from '../../../services/api';
 
 function extractVideoId(url) {
@@ -32,7 +31,7 @@ function VerCurso(){
     const [curso, setCurso] = useState(null);
     const [aulaAtual, setAulaAtual] = useState(null);  
     const [aulaAtualDados, setAulaAtualDados] = useState(null);
-    const [ultimaAula, setUltimaAula] = useState(null);
+    //const [ultimaAula, setUltimaAula] = useState(null);
     const [aulaAtualTimeStamp, setAulaAtualTimeStamp] = useState(0);
     const [moduloAtual, setModuloAtual] = useState(null);
     const [menorAulaId, setMenorAulaId] = useState(null);
@@ -40,7 +39,6 @@ function VerCurso(){
     const [jaComprou, setJaComprou] = useState(null);
     const [nota, setNota] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [notFound, setNotFound] = useState(false);
 
     const tryGoToEnd = () => {
         const player = playerRef.current;
@@ -90,7 +88,7 @@ function VerCurso(){
 
             const indexAtual = aulas.findIndex(a => a.id === currentId);
 
-            const currentAula = aulas[indexAtual];
+//            const currentAula = aulas[indexAtual];
             const nextAula = aulas[indexAtual + 1];
 
             api.post("/progresso/aula", {
@@ -114,10 +112,10 @@ function VerCurso(){
         }
     };
 
-    function toggleDescription(){
+    /* function toggleDescription(){
         const el = document.querySelector(".curso-descricao-text");
         el.classList.toggle("collapsed");
-    }
+    }*/
            
 
     useEffect(() => {
@@ -157,7 +155,7 @@ function VerCurso(){
                 playerRef.current = null;
             }
         };
-    }, [loading]);
+    }, [loading, onPlayerStateChange]);
 
     useEffect(() => {
         aulaAtualRef.current = aulaAtual;
@@ -165,15 +163,15 @@ function VerCurso(){
 
     useEffect(() => {
         aulaAtualTimeStampRef.current = aulaAtualTimeStamp;
-    }, [aulaAtualTimeStamp]);
+    }, [aulaAtualTimeStamp, onPlayerStateChange]);
 
     useEffect(() => {
         if(user === undefined) return;
 
-        if(user == null){
+        if(user === null){
             navigate("/entrar");
         }
-    }, [user]);
+    }, [user, navigate]);
 
     useEffect(() => {
         api.get(`cursos/aulas/slug/${slug}`)
@@ -183,9 +181,9 @@ function VerCurso(){
         .catch(err => {
         console.error("Falha ao obter curso: ", err);
         setLoading(false);
-        setNotFound(true);
+        // setNotFound(true);
         });
-    }, [slug])
+    }, [slug, navigate]);
 
     useEffect(() => {
         if (curso == null) return;
@@ -205,12 +203,12 @@ function VerCurso(){
             if (modulo === null || modulo.ordem !== 1) return;
             setMenorAulaId(modulo.aulas[0].id);
         });
-    }, [curso])
+    }, [curso, navigate, user]);
    
     useEffect(() => {
-        if(curso == null) return;
-        if(jaComprou == null) return;
-        if(menorAulaId == null) return;
+        if(curso === null) return;
+        if(jaComprou === null) return;
+        if(menorAulaId === null) return;
 
         if(jaComprou !== true){
             navigate(-1);
@@ -219,7 +217,7 @@ function VerCurso(){
 
         api.get(`progresso/ultima-aula/${curso.id}`)
         .then(res => {
-            if(res.data == ""){
+            if(res.data === ""){
                 setAulaAtual(menorAulaId);
                 const moduloDaAula = curso.modulos.find(m => m.aulas.some(a => a.id === menorAulaId));
                 setModuloAtual(moduloDaAula.id);
@@ -227,7 +225,7 @@ function VerCurso(){
                 setAulaAtualDados(aulaData);
             }
             else{
-                setUltimaAula(res.data);
+                //setUltimaAula(res.data);
                 setAulaAtualTimeStamp(res.data.ultimoSegundo);
                 setAulaAtual(res.data.aula.id);
                 setModuloAtual(res.data.aula.moduloId);
@@ -254,7 +252,7 @@ function VerCurso(){
             console.error("Falha ao obter avaliações do curso: ", err);
             setLoading(false);
         });
-    }, [curso, jaComprou]);
+    }, [curso, jaComprou, navigate, user, menorAulaId]);
 
 
     useEffect(() => {
@@ -278,7 +276,7 @@ function VerCurso(){
             playerRef.current.cueVideoById(videoId);
             playerRef.current.playVideo();
         }, 100);
-    }, [aulaAtual, aulaAtualDados, curso, playerReady]);
+    }, [aulaAtual, aulaAtualDados, curso, playerReady, menorAulaId, navigate]);
     
     useEffect(() => {
         if (!aulaAtual) return;
@@ -293,7 +291,7 @@ function VerCurso(){
         .catch(err => {
             console.error("Não foi possível obter o número de aulas concluidas", err);
         })
-    }, [aulaAtual])
+    }, [aulaAtual, aulaAtualDados, curso]);
 
     useEffect(() => {
         if (!playerReady) return;
@@ -305,7 +303,7 @@ function VerCurso(){
             playerRef.current.playVideo();
             pendingVideoIdRef.current = null;
         }, 100);
-    }, [playerReady]);
+    }, [playerReady, aulaAtualDados, curso]);
 
     useEffect(() => {
         if (!aulaAtual) return;
@@ -442,7 +440,7 @@ function VerCurso(){
                         <div className="progress-fill" style={{ width: `${((aulasConcluidas.length / curso.numeroAulas) * 100).toFixed(0)}%` }} ></div>
                     </div>
 
-                    {((aulasConcluidas.length / curso.numeroAulas) * 100).toFixed(0)== 100 ? (
+                    {((aulasConcluidas.length / curso.numeroAulas) * 100).toFixed(0) === 100 ? (
                         <>
                             <div className="progresso-completo">
                                 <i className="fa-solid fa-award"></i>

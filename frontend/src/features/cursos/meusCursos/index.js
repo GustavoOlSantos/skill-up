@@ -1,21 +1,10 @@
-import React, {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 
 import api from "../../../services/api";
 import Loading from "../../../components/loading/";
 import { UserContext } from "../../../app/providers/user-context";
 import CardCursos from "../../../components/card-cursos";
-
-function obterAulasConcluidas(cursoId) {
-    return api.get(`progresso/aulas-concluidas/${cursoId}`)
-        .then(res =>{
-            return res.data;   
-        })
-        .catch(err => {
-            console.error("Não foi possível obter o número de aulas concluidas", err);
-            return [];
-        });
-}
 
 function MeusCursos() {
 

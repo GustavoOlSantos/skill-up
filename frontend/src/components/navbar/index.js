@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import SearchBar from "../searchBar";
@@ -137,6 +137,7 @@ function NavBar() {
                                     e.currentTarget.src = defaultIcon;
                                 }}
                                 onClick={() => setOpenModal(!openModal)}
+                                alt="Ícone do usuário"
                             />
 
                             {openModal && (

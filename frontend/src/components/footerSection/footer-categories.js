@@ -1,5 +1,4 @@
-import react, {useEffect, useState} from "react";
-import { Navigate } from "react-router-dom";
+import {useEffect, useState} from "react";
 import api from "../../services/api";
 
 function FooterCategorias(){
@@ -20,7 +19,7 @@ function FooterCategorias(){
         api.post("/categorias/filtrar", dbcategories)
         .then(res => setCategorias(res.data))
         .catch(err => console.error(err));
-    }, []);
+    }, [dbcategories]);
 
     return (
         <section className="categories">

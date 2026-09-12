@@ -1,5 +1,3 @@
-import react from "react";
-
 function Tags({icone, dado, texto, className}) {
     return (
         <div className={`tag ${className || ''}`}>

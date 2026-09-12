@@ -1,5 +1,4 @@
-import react, {useEffect, useState} from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import SocialBtn from "../social-media-btns";
 import FooterCategorias from "./footer-categories";

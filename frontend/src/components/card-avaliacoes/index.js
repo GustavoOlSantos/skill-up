@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import api from "../../services/api";
 import {getCloudImageUrl} from "../../services/cloud_images";
 import defaultIcon from "../../assets/default-icon.jpg";
@@ -12,7 +12,7 @@ function AvaliacoesCard({avaliacao}){
         .then(res =>{
             setUser(res.data);
         })
-    },  [])
+    },  [user, avaliacao.userId]);
 
     if(user == null){
         return(<></>);
@@ -23,15 +23,12 @@ function AvaliacoesCard({avaliacao}){
 
             <section className="card-header">
                 <figure className="user-card-pic">
-                    <img src={
-                        user.userImagePath
-                        ? getCloudImageUrl(user.userImagePath)
-                        : defaultIcon
-                        }
+                    <img src={user.userImagePath ? getCloudImageUrl(user.userImagePath) : defaultIcon }
                         onError={(e) => {
                             e.currentTarget.onerror = null; // evita loop
                             e.currentTarget.src = defaultIcon;
                         }}
+                        alt="Foto do usuário"
                     />
                 </figure>
 
