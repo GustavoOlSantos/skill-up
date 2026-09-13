@@ -72,6 +72,7 @@ A plataforma está totalmente deployada e integrada com serviços cloud reais.
 - Gerenciamento de imagens via Cloudinary
 - Integração MySQL + MongoDB
 - Interface responsiva com suporte a dispositivos mobile
+- Cache de aplicação para requisições frequentes, como cursos mais vendidos, todos os cursos...
 - Health check via `/health` utilizado pelo Render para monitoramento e restart automático por `cron-job.org` para evitar cold start por inatividade no plano gratuito
 
 ---
@@ -134,6 +135,10 @@ A pipeline é dividida em três jobs, onde as builds de frontend e backend rodam
 
 | Job | Função |
 |---|---|
+| Segurança (Backend)| Realiza a análise de vulnerabibilidades conhecidas presentes no projeto, de acordo com o relatório Owasp |
+| Análise Estática (Backend) | Realiza a análise estática de código utilizando o SpotBugs, detectando code smells e má práticas |
+| Segurança (frontend) | Realiza a análise de vulnerabilidades conhecidas utilizando o npm audit |
+| Análise Estática (Frontend) | Realiza a análise estática de código utilizando o SpotBugs, detectando code smells e não conformidades com os padrões do React|
 | build-frontend | Instala dependências, gera a build de produção do React e salva o resultado como artefato |
 | build-backend | Compila a aplicação Spring Boot via Maven Wrapper e salva o `.jar` gerado como artefato |
 | testes-cypress | Baixa os artefatos das builds anteriores, sobe instâncias temporárias de MySQL e MongoDB como *services*, popula o banco com dados de seed, levanta o backend e o frontend localmente e executa os testes E2E com Cypress contra a aplicação completa |
@@ -168,6 +173,7 @@ domain/
 DTO/
 exception/
 repository/
+scheduler/
 security/
 service/
 utils/
@@ -180,6 +186,7 @@ utils/
 * DTOs → transferência de dados
 * Exception Handler → tratamento global de erros
 * Repositories → acesso aos dados
+* scheduler → centraliza a exclusão do cache da aplicação
 * Security → autenticação e autorização JWT
 * Services → regras de negócio
 * Utils  → utilitários de suporte
