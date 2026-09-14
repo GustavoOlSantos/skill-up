@@ -134,9 +134,9 @@ public class CursosService {
 
         if (dto.subcategorias != null) {
             List<Subcategoria> subcategorias = dto.subcategorias.stream()
-                .map(ref -> subcategoriaRepository.findById(ref.id)
+                .map(ref -> subcategoriaRepository.findById(ref.getId())
                     .orElseThrow(() -> new BusinessException(
-                        "Subcategoria informada não encontrada: " + ref.id, true, HttpStatus.BAD_REQUEST, "create-full-curso")))
+                        "Subcategoria informada não encontrada: " + ref.getId(), true, HttpStatus.BAD_REQUEST, "create-full-curso")))
                 .toList();
             curso.setSubcategorias(subcategorias);
         }
@@ -144,23 +144,23 @@ public class CursosService {
         if (dto.modulos != null) {
             List<ModuloCurso> modulos = dto.modulos.stream().map(moduloDTO -> {
                 ModuloCurso modulo = new ModuloCurso();
-                modulo.setTitulo(moduloDTO.titulo);
-                modulo.setDescricao(moduloDTO.descricao);
-                modulo.setOrdem(moduloDTO.ordem);
-                modulo.setCurso(curso); // FK
+                modulo.setTitulo(moduloDTO.getTitulo());
+                modulo.setDescricao(moduloDTO.getDescricao());
+                modulo.setOrdem(moduloDTO.getOrdem());
+                modulo.setCurso(curso); 
 
-                if (moduloDTO.aulas != null) {
-                    List<AulaCurso> aulas = moduloDTO.aulas.stream().map(aulaDTO -> {
+                if (moduloDTO.getAulas() != null) {
+                    List<AulaCurso> aulas = moduloDTO.getAulas().stream().map(aulaDTO -> {
                         AulaCurso aula = new AulaCurso();
-                        aula.setTitulo(aulaDTO.titulo);
-                        aula.setDescricao(aulaDTO.descricao);
-                        aula.setVideo_url(aulaDTO.videoUrl);
+                        aula.setTitulo(aulaDTO.getTitulo());
+                        aula.setDescricao(aulaDTO.getDescricao());
+                        aula.setVideo_url(aulaDTO.getVideoUrl());
                         aula.setThumbnail(aulaDTO.thumbnail);
-                        aula.setDuracao_segundos(aulaDTO.duracaoSegundos);
-                        aula.setOrdem(aulaDTO.ordem);
-                        aula.setGratuita(aulaDTO.gratuita);
-                        aula.setPublicada(aulaDTO.publicada);
-                        aula.setModulo(modulo); // FK
+                        aula.setDuracao_segundos(aulaDTO.getDuracaoSegundos());
+                        aula.setOrdem(aulaDTO.getOrdem());
+                        aula.setGratuita(aulaDTO.getGratuita());
+                        aula.setPublicada(aulaDTO.getPublicada());
+                        aula.setModulo(modulo);
                         return aula;
                     }).toList();
                     modulo.setAulas(aulas);

@@ -17,24 +17,24 @@ import com.plataforma.cursos.DTO.SubcategoriaDTO;
 @SuppressWarnings("unused")
 public class ListCursosDTO {
 
-    public Long id;
-    public String slug;
-    public String nome;
-    public String subtitulo;
-    public String descricao;
-    public String instrutor;
-    public String duracao;
-    public int numeroAulas;
-    public String imagemUrl;
-    public Date ultimaAtualizacao;
-    public String idioma;
-    public String nivel;
-    public int alunosMatriculados;
-    public float preco;
-    public List<SubcategoriaDTO> subcategorias;
+    private Long id;
+    private String slug;
+    private String nome;
+    private String subtitulo;
+    private String descricao;
+    private String instrutor;
+    private String duracao;
+    private int numeroAulas;
+    private String imagemUrl;
+    private Date ultimaAtualizacao;
+    private String idioma;
+    private String nivel;
+    private int alunosMatriculados;
+    private float preco;
+    private List<SubcategoriaDTO> subcategorias;
     
-    public Float mediaAvaliacao;
-    public Integer quantidadeAvaliacoes;
+    private Float mediaAvaliacao;
+    private Integer quantidadeAvaliacoes;
 
     public ListCursosDTO() {  
     }

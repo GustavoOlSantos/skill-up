@@ -4,14 +4,19 @@ import java.util.List;
 
 import com.plataforma.cursos.domain.entities.ModuloCurso;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter 
+@Setter 
 public class ModuloCursoDTO {
 
-    public Long id;
-    public String titulo;
-    public String descricao;
-    public Integer ordem;
+    private Long id;
+    private String titulo;
+    private String descricao;
+    private Integer ordem;
 
-    public List<AulaCursoDTO> aulas;
+    private List<AulaCursoDTO> aulas;
 
     public ModuloCursoDTO(){}
 

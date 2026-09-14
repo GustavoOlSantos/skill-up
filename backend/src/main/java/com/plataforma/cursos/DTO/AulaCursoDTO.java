@@ -2,17 +2,20 @@ package com.plataforma.cursos.DTO;
 
 import com.plataforma.cursos.domain.entities.AulaCurso;
 
+import lombok.Getter;
+
+@Getter
 public class AulaCursoDTO {
 
-    public Long id;
-    public String titulo;
-    public String descricao;
-    public String videoUrl;
-    public String thumbnail;
-    public Integer duracaoSegundos;
-    public Integer ordem;
-    public Boolean gratuita;
-    public Boolean publicada;
+    private Long id;
+    private String titulo;
+    private String descricao;
+    private String videoUrl;
+    private String thumbnail;
+    private Integer duracaoSegundos;
+    private Integer ordem;
+    private Boolean gratuita;
+    private Boolean publicada;
 
     public AulaCursoDTO() {}
 

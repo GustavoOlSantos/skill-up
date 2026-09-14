@@ -2,14 +2,16 @@ package com.plataforma.cursos.DTO;
 
 import java.util.List;
 
-public class CriarModuloDTO {
-    public String titulo;
-    public String descricao;
-    public Integer ordem;
-    public List<CriarAulaDTO> aulas;
+import lombok.Getter;
+import lombok.Setter;
 
-    public String getTitulo() { return titulo; }
-    public String getDescricao() { return descricao; }
-    public Integer getOrdem() { return ordem; }
+@Getter 
+@Setter 
+public class CriarModuloDTO {
+    private String titulo;
+    private String descricao;
+    private Integer ordem;
+    private List<CriarAulaDTO> aulas;
+
     public List<CriarAulaDTO> getAulas() { return aulas; }
 }

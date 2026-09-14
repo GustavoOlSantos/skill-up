@@ -1,11 +1,11 @@
 package com.plataforma.cursos.DTO;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter 
+@Setter 
 public class SubcategoriaRefDTO {
-    public Long id;
-    public String nome;
-    public String slug;
-
-    public Long getId() { return id; }
-    public String getNome() { return nome; }
-    public String getSlug() { return slug; }
+    private Long id;
+    private String nome;
+    private String slug;
 }

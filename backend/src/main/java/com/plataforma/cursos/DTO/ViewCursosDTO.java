@@ -2,20 +2,26 @@ package com.plataforma.cursos.DTO;
 import java.util.List;
 import java.util.Date;
 import com.plataforma.cursos.domain.entities.Cursos;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import com.plataforma.cursos.DTO.ModuloCursoDTO;
 
+@Getter 
+@Setter 
 @SuppressWarnings("unused")
 public class ViewCursosDTO {
-    public Long id;
-    public String nome;
-    public String descricao;
-    public String instrutor;
-    public String duracao;
-    public int numeroAulas;
-    public Date ultimaAtualizacao;
-    public int alunosMatriculados;
-    public String nivel;
-    public List<ModuloCursoDTO> modulos;
+    private Long id;
+    private String nome;
+    private String descricao;
+    private String instrutor;
+    private String duracao;
+    private int numeroAulas;
+    private Date ultimaAtualizacao;
+    private int alunosMatriculados;
+    private String nivel;
+    private List<ModuloCursoDTO> modulos;
 
     public ViewCursosDTO() {  
     }
@@ -38,14 +44,5 @@ public class ViewCursosDTO {
         return dto;
     }
 
-    public Long getId() { return id; }
-    public String getNome() { return nome; }
-    public String getDescricao() { return descricao; }           // adicionado
-    public String getInstrutor() { return instrutor; }
-    public String getDuracao() { return duracao; }
-    public int getNumeroAulas() { return numeroAulas; }
-    public Date getUltimaAtualizacao() { return ultimaAtualizacao; } // adicionado
-    public int getAlunosMatriculados() { return alunosMatriculados; } // adicionado
-    public String getNivel() { return nivel; }
     public List<ModuloCursoDTO> getModulos() { return modulos; }
 }

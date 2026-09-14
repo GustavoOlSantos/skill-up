@@ -2,13 +2,18 @@ package com.plataforma.cursos.DTO;
 
 import com.plataforma.cursos.domain.entities.User;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter 
+@Setter 
 public class UserDTO {
 
-    public Long  id;
-    public String nome;
-    public String email;
-    public String telefone;
-    public String userImagePath;
+    private Long  id;
+    private String nome;
+    private String email;
+    private String telefone;
+    private String userImagePath;
 
     public UserDTO() {  
     }
@@ -32,11 +37,4 @@ public class UserDTO {
 
         return dto;
     }
-
-
-    public Long getId() { return id; }
-    public String getNome() { return nome; }
-    public String getEmail() { return email; }
-    public String getTelefone() { return telefone; } 
-    public String getUserImagePath() { return userImagePath; }
 }
