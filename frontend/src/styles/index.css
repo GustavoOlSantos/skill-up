@@ -617,6 +617,9 @@ footer.main .categories{
 
 footer.main .footer-end{
   margin: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer.main .footer-end div{
@@ -627,6 +630,27 @@ footer.main .footer-end div{
 footer.main .footer-end div h4{
    color: #e9e9e96c !important;
    font-weight: 100;
+}
+
+.author-section{
+  display: flex;
+  align-items: center;
+  gap:5px;
+}
+
+.author-pic{
+  width: 50px;
+  height: 50px;
+  border-radius: 100rem;
+  object-fit: cover;
+  object-position: 50% 35%;
+  display: block;
+}
+
+.author-section a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #e9e9e96c;
 }
 
 ul.unstyled-list{

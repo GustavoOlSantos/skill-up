@@ -1,5 +1,10 @@
 package com.plataforma.cursos.DTO;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter 
+@Setter 
 public class SubcategoriaDTO {
 
     private Long id;
@@ -11,8 +16,4 @@ public class SubcategoriaDTO {
         this.nome = nome;
         this.slug = slug;
     }
-
-    public Long getId() { return id; }
-    public String getNome() { return nome; }
-    public String getSlug() { return slug; }
 }

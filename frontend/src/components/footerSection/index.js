@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import SocialBtn from "../social-media-btns";
 import FooterCategorias from "./footer-categories";
 
+import EU from '../../assets/eu.webp';
+
 function Footer(){
 
-    const year = new Date().getFullYear();
+    //const year = new Date().getFullYear();
     const navigate = useNavigate();
 
     return(
@@ -77,7 +79,12 @@ function Footer(){
                 <section className="footer-end">
                     <div>
                         <img src="/Icon.png"  alt="Logo Skill Up" className="logo" onClick={() => navigate("/")}/> 
-                        <h4>© {year} Skill Up</h4>
+                        <h4>Skill Up</h4>
+                    </div>
+
+                    <div className="author-section">
+                        <img className="author-pic" src={EU} alt="Desenvolvedor da aplicação Gustavo Santos"></img>
+                        <a target="_blank" rel="noreferrer" href="https://gustavoolsantos.dev.br/">GustavoOlSantos @ 2026 </a> 
                     </div>
                 </section>
 
