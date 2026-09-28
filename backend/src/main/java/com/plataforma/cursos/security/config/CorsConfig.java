@@ -15,6 +15,7 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:3000")
                         .allowedOrigins("https://project-pritz.vercel.app")
+                        .allowedOrigins("https://skillup.gustavoolsantos.dev.br")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
             }
